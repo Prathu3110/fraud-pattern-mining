@@ -22,6 +22,14 @@ supervised classifier:
 (Kaggle, simulated with the Sparkov generator): `fraudTrain.csv` 1,296,675 rows and
 `fraudTest.csv` 555,719 rows, 23 columns. See [`data/README.md`](data/README.md) for download steps.
 
+## Results
+
+See [reports/summary.md](reports/summary.md) for the full numbers.
+
+![Fraud rate by category](reports/figures/01_fraud_rate_by_category.png)
+![Fraud rate by hour](reports/figures/02_fraud_rate_by_hour.png)
+![Isolation Forest scores](reports/figures/06_isolation_forest_scores.png)
+
 ## Run it
 
 ```bash
