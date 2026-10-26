@@ -1,11 +1,6 @@
 # raw data (download from Kaggle, see data/README.md)
 data/*.csv
 data/*.zip
-# generated outputs
-reports/figures/*.png
-reports/*.csv
-reports/results.json
-reports/summary.md
 # python
 __pycache__/
 *.pyc
