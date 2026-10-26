@@ -1,0 +1,240 @@
+{
+  "data": "/Volumes/DISKA/Dev/fraud-pattern-mining/data/fraudTrain.csv",
+  "profile": {
+    "records": 1296675,
+    "attributes": 22,
+    "numerical_attributes": [
+      "cc_num",
+      "amt",
+      "zip",
+      "lat",
+      "long",
+      "city_pop",
+      "unix_time",
+      "merch_lat",
+      "merch_long",
+      "is_fraud"
+    ],
+    "categorical_attributes": [
+      "trans_date_trans_time",
+      "merchant",
+      "category",
+      "first",
+      "last",
+      "gender",
+      "street",
+      "city",
+      "state",
+      "job",
+      "dob",
+      "trans_num"
+    ],
+    "missing_values": 0,
+    "duplicate_records": 0,
+    "memory_mb": 436.9,
+    "fraud_count": 7506,
+    "fraud_rate_pct": 0.579,
+    "date_min": "2019-01-01 00:00:18",
+    "date_max": "2020-06-21 12:13:37"
+  },
+  "eda": {
+    "top_fraud_categories_pct": {
+      "shopping_net": 1.756,
+      "misc_net": 1.446,
+      "grocery_pos": 1.41,
+      "shopping_pos": 0.723,
+      "gas_transport": 0.469
+    },
+    "peak_fraud_hours_pct": {
+      "22": 2.883,
+      "23": 2.837,
+      "1": 1.535,
+      "0": 1.494
+    },
+    "amount_by_class": {
+      "genuine": {
+        "mean": 67.67,
+        "50%": 47.28,
+        "max": 28948.9
+      },
+      "fraud": {
+        "mean": 531.32,
+        "50%": 396.5,
+        "max": 1376.04
+      }
+    }
+  },
+  "rules_found": 40,
+  "top_rules": [
+    {
+      "if": "amt=300-800 AND category=grocery_pos",
+      "support": 0.0009,
+      "confidence": 1.0,
+      "lift": 172.7518,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=300-800 AND category=grocery_pos AND time=night(0-5)",
+      "support": 0.0006,
+      "confidence": 1.0,
+      "lift": 172.7518,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=300-800 AND category=grocery_pos AND day=weekday",
+      "support": 0.0006,
+      "confidence": 1.0,
+      "lift": 172.7518,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "age=60+ AND amt=>800 AND time=late(22-23)",
+      "support": 0.0005,
+      "confidence": 0.9507,
+      "lift": 164.2359,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=>800 AND category=shopping_net AND time=late(22-23)",
+      "support": 0.001,
+      "confidence": 0.8975,
+      "lift": 155.0463,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=>800 AND gender=M AND time=late(22-23)",
+      "support": 0.001,
+      "confidence": 0.8806,
+      "lift": 152.1302,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "age=40-60 AND amt=>800 AND time=late(22-23)",
+      "support": 0.0005,
+      "confidence": 0.7793,
+      "lift": 134.6219,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=>800 AND day=weekday AND time=late(22-23)",
+      "support": 0.001,
+      "confidence": 0.7791,
+      "lift": 134.5869,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=>800 AND time=late(22-23)",
+      "support": 0.0015,
+      "confidence": 0.7746,
+      "lift": 133.8141,
+      "then": "fraud=YES"
+    },
+    {
+      "if": "amt=>800 AND category=shopping_net AND gender=M",
+      "support": 0.0008,
+      "confidence": 0.6871,
+      "lift": 118.7006,
+      "then": "fraud=YES"
+    }
+  ],
+  "clustering": {
+    "silhouette_by_k": {
+      "3": 0.168,
+      "4": 0.1657,
+      "5": 0.1692,
+      "6": 0.1683,
+      "7": 0.1762,
+      "8": 0.1802
+    },
+    "best_k": 8,
+    "silhouette": 0.1802,
+    "davies_bouldin": 1.4555,
+    "profiles": [
+      {
+        "cluster": 0,
+        "size": 22500,
+        "mean_amt": 27.17,
+        "mean_hour": 17.65,
+        "mean_age": 36.85,
+        "mean_distance_km": 78.71,
+        "fraud_rate_pct": 0.11
+      },
+      {
+        "cluster": 1,
+        "size": 19347,
+        "mean_amt": 116.36,
+        "mean_hour": 7.3,
+        "mean_age": 42.63,
+        "mean_distance_km": 78.9,
+        "fraud_rate_pct": 0.81
+      },
+      {
+        "cluster": 2,
+        "size": 30968,
+        "mean_amt": 97.78,
+        "mean_hour": 4.39,
+        "mean_age": 43.67,
+        "mean_distance_km": 79.88,
+        "fraud_rate_pct": 0.81
+      },
+      {
+        "cluster": 3,
+        "size": 26899,
+        "mean_amt": 6.91,
+        "mean_hour": 17.55,
+        "mean_age": 38.81,
+        "mean_distance_km": 82.84,
+        "fraud_rate_pct": 0.15
+      },
+      {
+        "cluster": 4,
+        "size": 17243,
+        "mean_amt": 6.29,
+        "mean_hour": 6.44,
+        "mean_age": 64.97,
+        "mean_distance_km": 75.0,
+        "fraud_rate_pct": 0.32
+      },
+      {
+        "cluster": 5,
+        "size": 31701,
+        "mean_amt": 117.19,
+        "mean_hour": 17.31,
+        "mean_age": 37.37,
+        "mean_distance_km": 96.52,
+        "fraud_rate_pct": 1.09
+      },
+      {
+        "cluster": 6,
+        "size": 28172,
+        "mean_amt": 77.68,
+        "mean_hour": 15.7,
+        "mean_age": 39.92,
+        "mean_distance_km": 37.47,
+        "fraud_rate_pct": 0.47
+      },
+      {
+        "cluster": 7,
+        "size": 23170,
+        "mean_amt": 84.82,
+        "mean_hour": 13.56,
+        "mean_age": 74.37,
+        "mean_distance_km": 78.52,
+        "fraud_rate_pct": 0.79
+      }
+    ]
+  },
+  "outliers": {
+    "rows_scored": 300000,
+    "outliers_flagged": 3000,
+    "outlier_pct": 1.0,
+    "fraud_rate_overall_pct": 0.581,
+    "fraud_rate_in_outliers_pct": 8.367,
+    "roc_auc_vs_label": 0.848,
+    "pr_auc_vs_label": 0.0531,
+    "recall_top1pct": 0.1439,
+    "precision_top1pct": 0.0837,
+    "recall_top5pct": 0.3865,
+    "precision_top5pct": 0.0449
+  }
+}
